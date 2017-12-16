@@ -6,7 +6,6 @@ pipeline {
     stages {
         stage("Compile") {
             steps {
-                checkout scm
                 wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
                     sh 'sbt compile'
                 }
