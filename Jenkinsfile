@@ -7,13 +7,17 @@ pipeline {
         stage("Compile") {
             steps {
                 checkout scm
-                sh 'sbt compile'
+                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+                    sh 'sbt compile'
+                }
             }
         }
 
         stage("Test") {
             steps {
-                sh 'sbt test'
+                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+                    sh 'sbt test'
+                }
             }
         }
     }
