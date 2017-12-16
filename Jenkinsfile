@@ -3,12 +3,16 @@
 pipeline {
     stages {
         stage("Compile") {
-            checkout scm
-            sh 'sbt compile'
+            steps {
+                checkout scm
+                sh 'sbt compile'
+            }
         }
 
         stage("Test") {
-            sh 'sbt test'
+            steps {
+                sh 'sbt test'
+            }
         }
     }
 }
